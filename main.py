@@ -8,7 +8,8 @@ file = open('words.txt','r')
 words = file.read().split(',')
 file.close()
 
-def nofify():
+
+def nofify(sec:int):
     rand_word = words[random.randrange(0,len(words)-1)].strip('\n')
     dictionary = PyDictionary()
     keys = list(dictionary.meaning(rand_word).keys())
@@ -16,11 +17,26 @@ def nofify():
 
     notification.notify(
         title = rand_word,
-            message = meaning,
-            app_name = 'reminder',
-            timeout = 6
+        message = meaning,
+        app_name = 'reminder',
+        timeout = 6
     )
-    time.sleep(10)
+    time.sleep(sec)
 
-while True:
-    nofify()
+def reminder(sec:int,mssg:str):
+    time.sleep(sec)
+    notification.notify(
+        title = 'Reminder',
+        message = mssg,
+        timeout = 4
+    )
+
+
+
+
+remind_word = False
+
+if __name__ == '__main__':
+    while True:
+        if remind_word:
+            nofify(10)
