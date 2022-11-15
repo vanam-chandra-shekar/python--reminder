@@ -9,9 +9,10 @@ words = file.read().split(',')
 file.close()
 
 
-def nofify(sec:int):
+def nofify_word(sec:int):
     rand_word = words[random.randrange(0,len(words)-1)].strip('\n')
     dictionary = PyDictionary()
+    print(rand_word)
     keys = list(dictionary.meaning(rand_word).keys())
     meaning = dictionary.meaning(rand_word)[keys[0]][0]
 
@@ -32,11 +33,22 @@ def reminder(sec:int,mssg:str):
     )
 
 
+command = str(input('> '))
+
+if 'remind' in command or 'Remind' in command:
+    command = command.split(' ',2)
+else:
+    command = command.split(' ')
 
 
-remind_word = False
-
-if __name__ == '__main__':
-    while True:
-        if remind_word:
-            nofify(10)
+if (command[0] == 'remind' or command[0] == 'Remind') and len(command) ==3:
+    if command[1].isdigit():
+        reminder(int(command[1]),command[2])
+    else:
+        print('Enter valid parameters')
+elif command[0] == 'remindword' and len(command) == 2:
+    if command[1].isdigit():
+        while True:
+            nofify_word(int(command[1]))
+else:
+    print('enter a valid command')
