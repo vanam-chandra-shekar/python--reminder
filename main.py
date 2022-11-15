@@ -53,6 +53,9 @@ while True:
         if command[1].isdigit():
             print('DO NOT CLOSE KEEP RUNING IN BACKGROUND TO WORK',f'Remind words every {command[1]} Seconds...')
             while True:
-                nofify_word(int(command[1]))
+                try:
+                    nofify_word(int(command[1]))
+                except AttributeError:
+                    print('Check your internet connection')
     else:
         print('enter a valid command')
