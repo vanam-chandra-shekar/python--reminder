@@ -59,3 +59,9 @@ while True:
                     print('Check your internet connection')
     else:
         print('enter a valid command')
+        
+        
+        
+# The contributors for this project are:
+# 1) Vanam Chandra Shekar - 12206976
+# 2) Sudheer Jillellamudi - 12206821
